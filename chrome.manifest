@@ -1,0 +1,4 @@
+content	socialsidebar	chrome/content/
+locale	socialsidebar	en-US	chrome/locale/en-US/
+skin	socialsidebar	classic/1.0	chrome/skin/
+overlay	chrome://browser/content/browser.xul	chrome://socialsidebar/content/firefoxOverlay.xul

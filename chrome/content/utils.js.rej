@@ -1,0 +1,17 @@
+***************
+*** 108,113 ****
+      }
+  }
+  function urlMatch(a, b) {
+      return a.split("/").slice(1).join("/") == b.split('/').slice(1).join('/');
+  }
+  function isYouTubeVideo(url) {
+--- 108,115 ----
+      }
+  }
+  function urlMatch(a, b) {
++     if(!b)
++         return false;
+      return a.split("/").slice(1).join("/") == b.split('/').slice(1).join('/');
+  }
+  function isYouTubeVideo(url) {

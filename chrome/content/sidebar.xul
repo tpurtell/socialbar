@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<?xml-stylesheet href="chrome://browser/skin/browser.css" type="text/css" ?>
+<!DOCTYPE page SYSTEM "chrome://socialsidebar/locale/socialsidebar.dtd">
+
+<page id="sbSocialSidebar" title="&socialsidebar.title;"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+  <vbox flex="1">
+    <iframe id="content-body" src="chrome://socialsidebar/content/ssb.html" flex="1"/>
+    </vbox>
+</page>

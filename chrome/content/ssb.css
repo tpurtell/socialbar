@@ -1,0 +1,114 @@
+div#sidebar {}
+div#post-template {visibility:hidden; position:absolute;}
+div.post-instance {visibility:visible; display:none; padding-top:3px; padding-left:3px; padding-right:3px;}
+div.post-comment {font-size:9pt;line-height:125%;margin-left:18px;}
+div.post-location {font-size:10pt; font-style:italic; overflow-x:hidden;}
+div.post-title {font-size:12pt; font-style:bold;}
+img.post-image {width:64px;}
+div.current-url {border-width:1px;border-radius:3px; -moz-border-radius: 15px;border-color:#000000;border-style: dashed;}
+div.post-header {width:100%;}
+div.post-picture-area {padding-left:0px;padding-right:10px;padding-top:0px;padding-bottom:0px;}
+img.post-picture {width:100%;}
+div.post-left {width:100px;float:left;text-align:center;}
+div.post-right {margin-left:100px;}
+div.post-splitter {clear:both;height:5px;background-color:transparent;}
+
+div.post-spot {height:10px;width:100%;opacity:0;}
+div.post-spacer {height:5px;width:100%;}
+
+div#comment-template {visibility:hidden; position:absolute;}
+
+div.comment-instance {visibility:visible; display:none;}
+div.comment-left {width:68px;float:left;text-align:center;}
+div.comment-right {margin-left:68px;}
+div.comment-comment {font-size:9pt; line-height:125%;}
+div.comment-splitter {clear:both;height:5px;background-color:transparent;}
+div.comment-spot {height:10px;width:60%;margin-left:auto;margin-right:auto;border-style: dashed;border-width:3px;border-color:#000000;}
+div.comment-spacer {height:5px;width:100%;}
+div.comment-instance {visibility:visible;}
+img.comment-image {width:32px;}
+
+div#share {visibility:visible;}
+
+html, body {margin:0px; padding:0px;background-color:#ffffff;}
+div#share-photo {width:100px;float:left;text-align:center;}
+img#share-photo-image {width:64px;}
+div#share-title {margin-left:100px;}
+textarea#share-title-textarea {width:100%;border: 1px solid;font-size:12pt; font-style:bold;}
+
+div#share-comment {width:100%;}
+textarea#share-comment-textarea {width:100%;border: 1px solid;}
+div#share-group {margin-right:100px;}
+input#share-group-autocomplete {width:100%; border: 1px solid; }
+div#share-submit {float:right;width:90px;text-align:center;}
+input#share-submit-button {width:100%;font-size:90%;}
+
+div#tabs {font-size:70%;position:fixed;width:105%;z-index:10000;overflow-x:hidden;overflow:hidden;left:-4px;top:-4px;}
+.skinnier {width:95%;}
+div.ui-dialog {font-size:70%;}
+div#tab-spacer {width:100%;height:0px;}
+div#offline {position:fixed;top:0px;z-index:11000;text-align:right;width:100%;pointer-events: none}
+
+div#share-comment-template {visibility:hidden; position:absolute;}
+div#share-comment-instance {visibility:visible; display:none; width:100%;}
+div.share-comment-photo {width:36px;float:left;text-align:center;}
+img.share-comment-photo-image {width:32px;}
+div.share-comment-comment {margin-left:40px;}
+textarea.share-comment-comment-textarea {width:100%;border: 1px solid;}
+div.share-comment-group {margin-right:100px;}
+input.share-comment-group-autocomplete {width:100%; border: 1px solid; }
+div.share-comment-submit {float:right;width:90px;text-align:center;}
+input.share-comment-submit-button {width:100%;font-size:90%;}
+div.post-commenting {padding:15px;font-size:70%;}
+
+div#share-comment-template {visibility:hidden; position:absolute;}
+.hidden {visibility:visible; display:none;}
+div#place-filter {left-padding:10px;right-padding:10px;}
+a#place-filter-link {font-style:bold;}
+div#share {padding:15px;font-size:70%;}
+div.refreshers {text-align:center;}
+
+/*the css for the login kind of sucks*/
+div#login {padding:15px;font-size:70%;text-align:center;}
+div#login-username-label {float:left;text-align:right;width:60px;padding:5px;}
+div#login-username {float:left;width:60px;}
+div#login-password-label {float:left;text-align:right;width:60px;padding:5px;}
+div#login-password {float:left;width:60px;}
+div#login-progress-message {text-align:center;}
+div#login-imap-label {float:left;text-align:right;width:60px;padding:5px;}
+div#login-imap {float:left;width:60px;}
+div#login-smtp-label {float:left;text-align:right;width:60px;padding:5px;}
+div#login-smtp {float:left;width:60px;}
+div#login-info {padding:15px;font-size:70%;text-align:center;}
+a.gravatar-link {color:#0000ff;}
+div#loading {padding:15px;font-size:70%;text-align:center;}
+div#loading-progress-message {text-align:center;}
+
+a.inline-link {color:#0000ff;text-decoration: underline;}
+div#profile-img {float: left; padding: 5px; }
+span.display { color: #666666; font-size: 120%; }
+#profile-first-name span { color: black; font-size: 150%; font-weight: bold; float: left;}
+#profile-last-name span { margin-left: 5px; color: black; font-size: 150%; font-weight: bold; }
+#profile-img img { height: 80px; width: 80px; }
+#friend-request-button { margin: 5px; }
+#friend-request-status { margin: 5px; color: red;}
+div#profile-container { }
+div#mini-profile-template {visibility:hidden; position:absolute;}
+div#mini-profile-instance {visibility:visible; display:none; width:100%;}
+
+div.mini-profile-container {overflow: auto; margin-bottom: 20px; border-bottom-style: dotted; border-width: 1px; border-color: #BBB; padding: 10px; }
+div.mini-profile-left { float: left; margin-right: 10px;}
+div.mini-profile-right {color: #666666; font-size: 80%}
+div.mini-profile-name { color: black; font-size: 110%; font-weight: bold;}
+div.mini-profile-request-options { margin-top: 5px; }
+.mini-profile-image { width: 65px; }
+.mini-profile-request-options {font-size: 70%;}
+.request-accept-button { margin-right: 5px; }
+
+#friends-spinner { overflow: auto; display: inline; }
+#friends-spinner-img { float: left; width: 20px; padding-right: 3px; }
+#friends-spinner-text { font-size: 130%; }
+#profile-spinner { overflow: auto;}
+#profile-spinner-img { float: left; width: 20px; padding-right: 3px; }
+#profile-spinner-text { font-size: 130%; }
+

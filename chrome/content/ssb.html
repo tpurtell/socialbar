@@ -1,0 +1,250 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Test</title>
+    <link href="theme/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="email.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="jquery-ui.js"></script>
+    <script type="text/javascript" src="ssb.js"></script>
+    <link href="ssb.css" rel="stylesheet" type="text/css"/>
+  </head>
+    <body>
+        <div id="error-message" class="hidden" title="Error">
+            <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 0 0;"></span>
+            <span id="error-message-text">Unknown</span>
+            <div class="post-splitter"></div>
+            <div id="error-message-expander">
+                <h5><a href="#">Click for details...</a></h5>
+                <div id="error-message-detail" class="hidden">
+                    Details...
+                </div>
+            </div>
+        </div>
+        <div id="post-template" class="post-div">
+            <div class="post-header">
+                <div class="post-left">
+                    <img class="post-image" src="unknown.png" alt="unknown"/><br/>
+                    <span class="post-name">Name</span>
+                </div>
+                <div class="post-right">
+                    <div class="post-title"><a class="post-link" target="_main" href="#">Title</a></div><br>
+                    <div class="post-picture-area hidden">
+                        <a class="post-picture-link" href="#"><img class="post-picture" src="about:blank" alt="none"/></a>
+                    </div>
+                    <div class="post-location">Location</div>
+                </div>
+            </div>
+            <div class="post-splitter"></div>
+            <div class="post-people"></div>
+            <div class="post-children">
+                <div class="post-comment"></div>
+                <div class="post-spacer"></div>
+            </div>
+            <div class="post-spot ui-widget ui-widget-content ui-corner-all"></div>
+            <div class="post-spacer"></div>
+        </div>
+        <div id="comment-template" class="comment-div">
+            <div class="comment-left">
+                <img class="comment-image" src="unknown.png" alt="unknown"/><br/>
+                <span class="comment-name">Name</span>
+            </div>
+            <div class="comment-right">
+                <div class="comment-comment"></div>
+            </div>
+            <div class="comment-splitter"></div>
+            <div class="comment-spacer"></div>
+        </div>
+            
+        <div id="mini-profile-template" class="mini-profile-container ui-widget">
+            <div class="mini-profile-left">
+                <img class="mini-profile-image" src="unknown.jpg" alt="unknown"/>
+            </div>
+            <div class="mini-profile-right">
+                <div class="mini-profile-name">
+                </div>
+                <div class="mini-profile-email">
+                </div>
+                <div class="mini-profile-school">
+                </div>
+                <div class="mini-profile-geo">
+                </div>
+            </div>
+            <div class="mini-profile-request-options">
+                <a class="request-accept-button ui-state-default ui-corner-all">&nbsp;&nbsp;Share My Profile&nbsp;&nbsp;</a>
+                <a class="request-reject-button ui-state-default ui-corner-all">&nbsp;&nbsp;Ignore&nbsp;&nbsp;</a>
+            </div>
+        </div>
+        
+        <div id="share-comment-template">
+           <form onsubmit="return false;">
+              <div class="share-comment-photo"><img class="share-comment-photo-image" src="unknown.png" alt="unknown"/></div>
+              <div class="share-comment-comment"><textarea class="share-comment-comment-textarea">... enter a comment ...</textarea></div>
+              <div class="post-splitter"></div>
+              <div class="share-comment-submit"><input class="share-comment-submit-button" value="Share" type="button"/></div>
+              <div class="share-comment-group"><input class="share-comment-group-autocomplete" type="text" value="With..."/></div>
+              <div class="post-splitter"></div>
+          </form>
+        </div>
+      <div id="sidebar">
+        <div id="offline" class="hidden">
+          <font color="#ff0000"><strong>Offline</strong></font>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div id="tabs" class="hidden">
+            <ul>
+                <li><a href="#recent">Recent</a></li>
+                <li><a href="#place">Place</a></li>
+                <li><a href="#profile">Person</a></li>
+                <li><a href="#friends">Profiles</a></li>
+            </ul>
+          <div id="recent">
+              <div class="skinnier">
+                  <div style="float:right">Less</div>
+                  <div style="float:left">More</div>
+                  <div style="text-align:center;" id="time-text"></div>
+                  <div class="post-splitter"></div>
+                  <div id="time-slider"></div>
+              </div>
+          </div>
+          <div id="place">
+              <div class="skinnier">
+                  <div class="ui-widget hidden" id="place-filter"> 
+                      <div class="state-preview ui-state-highlight ui-corner-all">
+                          <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                          <strong>Filtered On:</strong> current site + <span id="place-filter-link"></span>
+                      </div>
+                  </div>
+                  <div style="float:right">Fuzzy</div>
+                  <div style="float:left">Exact</div>
+                  <div class="post-splitter"></div>
+                  <div id="specificity-slider"></div>
+              </div>
+          </div>
+          <div id="profile">
+              <div class="skinnier">
+                    <div id="profile-spinner">
+                        <img id="profile-spinner-img" src="loading.gif"><span id="profile-spinner-text">Loading...</span>
+                    </div>
+                    <div id="profile-alert-container" class="state-preview ui-state-highlight ui-corner-all">
+                              <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                              <span id="profile-alert"></span>
+                    </div>
+                    <div id="friend-request-container" class="ui-widget ui-state-default ui-widget-header ui-corner-all hidden">
+                        <p><span class="ui-icon ui-icon-circle-plus" style="float: left; margin-right: .3em;"></span>
+                        <div id="friend-request-msg">Friend Request Message</div>
+                        <input id="friend-request-button" type="button" value="Share Profile"/>
+                        <div id="friend-request-status"></div>
+                    </div>
+                        
+                    <div id="profile-container" class="ui-widget hidden">
+                        <div id="profile-img"><img class="perm" src="unknown.png">
+                        </div>
+                        <div id="profile-first-name">
+                            <span class="display">John</span><input type="text" id="profile-first-name-field" class="edit"/>
+                        </div>
+                        <div id="profile-last-name">
+                            <span class="display">Doe</span><input type="text" id="profile-last-name-field" class="edit"/>
+                        </div>
+                        <div id="profile-email">
+                            <span class="display"></span>
+                        </div>
+                        <div id="profile-school">
+                            <span class="display">School</span><input type="text" id="profile-school-field" class="edit"/>
+                        </div>
+                        <div id="profile-geo">
+                            <span class="display">City, State</span><input type="text" id="profile-geo-field" class="edit"/>
+                        </div>
+                        
+                        <div id="profile-birthdate">
+                            <span class="display">Nov 27, 1988</span><input type="text" id="profile-birthdate-field" class="edit"/>
+                        </div>
+                        <div id="profile-edit">
+                            <input id="profile-edit-button" class="display ui-state-default ui-corner-all" value="Edit" type="button"/><input id="profile-save-button" class="edit ui-state-default ui-corner-all" value="Save" type="button"/>
+                        </div>
+                    </div>
+                </div>
+          </div>
+          <div id="friends">
+            <div class="skinnier">
+                <div id="friends-spinner">
+                    <img id="friends-spinner-img" src="loading.gif"><span id="friends-spinner-text">Loading...</span>
+                </div>
+                <div id="friends-alert-container" class="state-preview ui-state-highlight ui-corner-all">
+                              <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                              <span id="friends-alert"></span>
+                </div>
+            
+            </div>
+          </div>
+      </div>
+      <div id="tab-spacer"></div>
+          <div class="post-splitter"></div>
+          <div id="login" class="ui-widget ui-widget-content ui-corner-all">
+              <div id="login-input">
+                 <form onsubmit="return false;">
+                   <div id="login-accordion">
+                     <h3><a href="#">Account</a></h3>
+                     <div>
+                        <div id="login-fields">
+                            <div id="login-username-label">Email</div>
+                            <div id="login-username"><input name="user" id="login-username-input" type="text" value=""/></div>
+                            <div class="post-splitter"></div>
+                            <div id="login-password-label">Password</div>
+                            <div id="login-password"><input name="password" id="login-password-input" type="password" value=""/></div>
+                            <div class="post-splitter"></div>
+                        </div>
+                        <input id="gravatar-checkbox" name="gravatar-checkbox" type="checkbox" checked/>Enable <a class="gravatar-link" href="http://www.gravatar.com" target="_main">Gravatars</a>
+                        <div id="login-submit"><input id="login-submit-button" value="Login" type="button"/></div>
+                        <iframe src="http://mobisocial.stanford.edu/mrprivacy/socialbar-version.php?ver=0.48" style="border:none" height="60"></iframe>
+                      </div>
+                      <h3><a href="#">Server Configuration</a></h3>
+                      <div>
+                          <div id="login-imap-label">IMAP Server</div>
+                          <div id="login-imap"><input name="user" id="login-imap-input" type="text" value=""/></div>
+                          <div class="post-splitter"></div>
+                          <div id="login-smtp-label">SMTP Server</div>
+                          <div id="login-smtp"><input name="password" id="login-smtp-input" type="text" value=""/></div>
+                          <div class="post-splitter"></div>
+                          <div><input id="login-logging-checkbox" name="login-logging-checkbox" type="checkbox"/>Enable Protocol Logging</div>
+                          <div><input id="login-cache-checkbox" name="login-cache-checkbox" type="checkbox"/>Clear Cache</div>
+                          <div id="login-back"><input id="login-back-button" value="OK" type="button"/></div>
+                          <div id="login-info">
+                              Social sidebar only supports IMAP servers that run over SSL (port 993) and SMTP server that run over SSL (port 465).
+                              SMTP 8BITMIME support is required, IMAP IDLE and UIDPLUS recommended, however they are present on almost all modern mail servers.
+                          </div>
+                      </div>
+                  </div>
+                </form>
+             </div>
+             <div id="login-status" class="hidden">
+                 <div id="login-progress-message">Authenticating...</div>
+                 <div id="login-progress"></div>
+             </div>
+          </div>
+          <div id="share" class="ui-widget ui-widget-content ui-corner-all hidden">
+            <form onsubmit="return false;">
+                <div id="share-photo"><img id="share-photo-image" src="unknown.png" alt="unknown"/></div>
+                <div id="share-title"><textarea id="share-title-textarea" rows="2">Title</textarea></div>
+                <div class="post-splitter"></div>
+                <div id="share-comment"><textarea id="share-comment-textarea">... enter a comment ...</textarea></div>
+                <div class="post-splitter"></div>
+                <div id="share-submit"><input id="share-submit-button" value="Share" type="button"/></div>
+                <div id="share-group"><input id="share-group-autocomplete" type="text" value="With..."/></div>
+                <div class="post-splitter"></div>
+            </form>
+          </div>
+          <div id="loading" class="ui-widget ui-widget-content ui-corner-all hidden">
+            <form onsubmit="return false;">
+                <div id="loading-progress-message">Loading...</div>
+                <div id="loading-progress"></div>
+            </form>
+          </div>
+          <div class="post-splitter"></div>
+          <div id="top"></div>
+          <div id="bottom"></div>
+      </div>
+    </body>
+  </html>
