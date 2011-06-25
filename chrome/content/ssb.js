@@ -1763,57 +1763,6 @@ Manager.prototype.activateProfile = function(context_item, from_location_change)
     if(manager.profile_filter == undefined) {
         manager.profile_filter = my_email;
     }
-    var profile = this.profiles[manager.profile_filter];
-    //Show profile-filter for debugging purposes
-    //$("#profile-filter").text(this.profile_filter);
-    if(profile == undefined) {
-        //If cannot find profile
-        if(manager.profile_filter == this.data_source.options['email']) {
-            //If trying to look at my own profile and it's not there
-            manager.profileAlert("Your profile is empty, click Edit to tell your friends about yourself.");
-            //Preload my picture and email
-            $("#profile-email .display").text(manager.profile_filter);
-            var person = this.people[manager.profile_filter];
-            $("#profile-img > .perm").attr("src", person.photo_url);
-            this.displayProfile(undefined);
-            
-        } else if(this.friends[manager.profile_filter] == undefined) {
-            //Trying too look at someone else's profile and they are not in friends list
-            var my_profile = this.profiles[my_email]
-            if(my_profile) {
-                //If I have created a profile
-                
-                //Show my own profile
-                this.displayProfile(my_profile);
-                
-                $("#friend-request-msg").text("The profile for " + this.profile_filter + " is unavailable.  Do you want to exchange profiles?");
-                //$("#friend-request-email-field").val(this.profile_filter);
-                $("#friend-request-status").hide();
-                
-                
-                $("#friend-request-container").show();
-                $("#profile-container").hide();
-            } else {
-                //Have not yet created profile, so show edit.
-                $("#friend-request-container").hide();
-                this.profileAlert("You are not friends with " + manager.profile_filter + ", but you must fill your profile before sending friend requests.");
-                $("#profile-container").show()
-                
-                    //Preload my picture and email
-                $("#profile-email .display").text(manager.profile_filter);
-                var person = this.people[manager.profile_filter];
-                $("#profile-img > .perm").attr("src", person.photo_url);
-                }
-        
-        } else {
-            // Trying to look at someone else's profile and they are a friend, but cannot find
-            $("#friend-request-container").hide();
-            manager.profileAlert("You are friends with " + manager.profile_filter + " but you do not have a copy of their profile!");
-        }
-    } else {
-        //profile found, display it.s
-        this.displayProfile(profile);
-    }
     this.activatePerson(context_item, from_location_change);
 };
 Manager.prototype.onGetProfiles = function(profiles, next_token, local_insert) {
@@ -2102,8 +2051,6 @@ $(document).ready(
                     manager.activatePlace(manager.tab_context);
                 } else if(selected == 2) {
                     manager.activateProfile(manager.tab_context);
-                } else if(selected == 3) {
-                    manager.activateFriends(manager.tab_context);
                 }
                 this.tab_context = undefined;
             }
