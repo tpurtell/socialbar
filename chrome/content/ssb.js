@@ -1352,6 +1352,12 @@ Manager.prototype.onConnectSuccess = function() {
         prefs.setCharPref(domain_pref + "_imap", $("#login-imap-input").val());
         prefs.setCharPref(domain_pref + "_smtp", $("#login-smtp-input").val());
         prefs.setBoolPref(email_pref + "_gravatar", this.enable_gravatars);
+        prefs.setBoolPref(email_pref + "_beta", this.beta);
+    }
+    if(this.beta) {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "https://spreadsheets.google.com/spreadsheet/formResponse?formkey=dEF6MWdwMUh4TXZaTXQwTmlYcWM4MHc6MQ&amp;embedded=true&amp;ifq&dubmit=Submit&entry.0.single=" + encodeURIComponent(email),true);
+        xmlhttp.send(null)    
     }
     $("#login-cache-checkbox").attr("checked", false);
     $("#login-logging-checkbox").attr("checked", false);
@@ -1649,6 +1655,7 @@ Manager.prototype.onLogin = function() {
     params['clear_cache'] = $("#login-cache-checkbox").attr("checked");
     
     this.enable_gravatars = $("#gravatar-checkbox").attr("checked");
+    this.beta = $("#beta-checkbox").attr("checked");
     var my_photo = "unknown.png";
     if(this.enable_gravatars) {
         my_photo = "http://www.gravatar.com/avatar/" + md5(params['email'].toLowerCase().trim());
@@ -2147,6 +2154,9 @@ $(document).ready(
                     }
                     if(prefs.prefHasUserValue(email_pref + "_gravatar")) {
                         $("#gravatar-checkbox").attr("checked", prefs.getBoolPref(email_pref + "_gravatar"));
+                    }
+                    if(prefs.prefHasUserValue(email_pref + "_beta")) {
+                        $("#beta-checkbox").attr("checked", prefs.getBoolPref(email_pref + "_beta"));
                     }
                 }
             }
