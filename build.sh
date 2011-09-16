@@ -7,7 +7,7 @@ TOP=`pwd`
 
 # TODO, remove unminified
 
-rm social-sidebar.xpi
+rm -f social-sidebar.xpi
 find chrome chrome.manifest install.rdf | \
     xargs zip -r social-sidebar.xpi
 
